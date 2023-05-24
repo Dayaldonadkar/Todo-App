@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../src/Assests/1024px-Microsoft_To-Do_icon.png";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
@@ -19,7 +19,8 @@ const Todo = () => {
       };
       setItems([...items, myNewInputData]);
       //   console.log("else", inputData);
-      console.log("items", items);
+      // console.log("items", items);
+      console.log(myNewInputData);
       setInputData("");
     }
   };
@@ -30,6 +31,10 @@ const Todo = () => {
     });
     setItems(updatedItems);
   };
+
+  useEffect(() => {
+    localStorage.setItem("mytodolist", JSON.stringify(items));
+  }, [items]);
 
   return (
     <div className="flex h-screen justify-center items-center">
